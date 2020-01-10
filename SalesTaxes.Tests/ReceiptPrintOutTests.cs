@@ -19,7 +19,7 @@ namespace SalesTaxes.Tests
 
        [Test]
         public void Printout_NoProductsEntered_ShouldReturnNull()
-        {
+        { 
             //Arrange
             var receipt = new List<Receipt>();
 

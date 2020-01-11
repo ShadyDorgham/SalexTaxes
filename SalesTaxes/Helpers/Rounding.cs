@@ -16,7 +16,7 @@ namespace SalesTaxes.Helpers
            
            if (fractionToBeRounded > .05M)
                fractionToBeRounded = .1M;
-
+ 
 
             return unRoundedAmount + fractionToBeRounded;
         }

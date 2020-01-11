@@ -18,7 +18,7 @@ namespace SalesTaxes.Helpers
                fractionToBeRounded = .1M;
  
 
-            return unRoundedAmount + fractionToBeRounded + "fsdf";
+            return unRoundedAmount + fractionToBeRounded;
         }
 
 

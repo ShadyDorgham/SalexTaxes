@@ -41,10 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DomainService\IBusinessLogic.cs" />
-    <Compile Include="DomainService\BusinessLogic.cs" />
-    <Compile Include="Helpers\IRounding.cs" />
-    <Compile Include="Helpers\Rounding.cs" />
+    <Compile Include="Business\IBusinessLogic.cs" />
+    <Compile Include="Business\BusinessLogic.cs" />
+    <Compile Include="Utilities\IRounding.cs" />
+    <Compile Include="Utilities\Rounding.cs" />
     <Compile Include="Models\Receipt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

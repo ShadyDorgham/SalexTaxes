@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SalesTaxes.Application.Helpers
+namespace SalesTaxes.Application.Utilities
 {
     public class Rounding : IRounding
     {

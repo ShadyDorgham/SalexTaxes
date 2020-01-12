@@ -1,15 +1,13 @@
-﻿
-using NUnit.Framework;
-using SalesTaxes.Application.Helpers;
+﻿using NUnit.Framework;
+using SalesTaxes.Application.Utilities;
 
-
-namespace SalesTaxes.Tests
+namespace SalesTaxes.Tests.UtilitiesTests
 {
     [TestFixture]
-    public class HelperTests
+    public class UtilitiesTests
     {
-        private Rounding _rounding;
-        public HelperTests()
+        private readonly Rounding _rounding;
+        public UtilitiesTests()
         {
             _rounding = new Rounding();
         }

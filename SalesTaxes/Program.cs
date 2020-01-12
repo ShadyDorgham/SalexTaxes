@@ -13,7 +13,7 @@ namespace SalesTaxes
             using (var scope = container.BeginLifetimeScope())
             {
                 var app = scope.Resolve<IApplicationRunner>();
-                app.run();
+                app.Print();
             }
 
             Console.ReadLine();

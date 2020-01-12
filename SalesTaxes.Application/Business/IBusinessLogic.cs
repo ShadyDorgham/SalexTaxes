@@ -2,7 +2,7 @@
 using System.Text;
 using SalesTaxes.Application.Models;
 
-namespace SalesTaxes.Application.DomainService
+namespace SalesTaxes.Application.Business
 {
     public interface IBusinessLogic
     {

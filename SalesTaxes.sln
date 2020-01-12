@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28307.902
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesTaxes", "SalesTaxes\SalesTaxes.csproj", "{5C43C8E5-0BCE-415F-8966-221C5A5CAF80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesTaxes.Tests", "SalesTaxes.Tests\SalesTaxes.Tests.csproj", "{5517723B-43F1-42D3-ABDC-ED399C841F15}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesTaxes.Application.Tests", "SalesTaxes.Tests\SalesTaxes.Application.Tests.csproj", "{5517723B-43F1-42D3-ABDC-ED399C841F15}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesTaxes.Application", "SalesTaxes.Application\SalesTaxes.Application.csproj", "{1F4CB19B-1A97-479D-9FDE-06A98B5FD807}"
 EndProject

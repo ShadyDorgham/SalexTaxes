@@ -1,4 +1,4 @@
-﻿namespace SalesTaxes.Application.Helpers
+﻿namespace SalesTaxes.Application.Utilities
 {
     public interface IRounding
     {

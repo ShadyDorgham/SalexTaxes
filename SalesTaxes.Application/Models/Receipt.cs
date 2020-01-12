@@ -29,5 +29,11 @@
 
         }
 
+
+        public decimal TaxAmount()
+        {
+            return ProductPrice() * TaxRate();
+        }
+
     }
 }

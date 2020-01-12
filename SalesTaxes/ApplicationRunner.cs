@@ -1,6 +1,6 @@
 ﻿
 using System;
-using SalesTaxes.Application.DomainService;
+using SalesTaxes.Application.Business;
 using SalesTaxes.Inputs;
 
 namespace SalesTaxes
@@ -14,7 +14,7 @@ namespace SalesTaxes
             _businessLogic = businessLogic;
         }
 
-        public void run()
+        public void Print()
         {
             var inputs = new ReceiptsInputs();
             Console.Write(_businessLogic.Printout(inputs.FirstTextCase()));

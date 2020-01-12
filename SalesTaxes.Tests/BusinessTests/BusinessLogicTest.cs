@@ -1,23 +1,25 @@
-﻿using NUnit.Framework;
-using SalesTaxes.Inputs;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using SalesTaxes.Application.DomainService;
-using SalesTaxes.Application.Helpers;
+using NUnit.Framework;
+using SalesTaxes.Application.Business;
 using SalesTaxes.Application.Models;
+using SalesTaxes.Application.Utilities;
+using SalesTaxes.Inputs;
 
-namespace SalesTaxes.Tests
+namespace SalesTaxes.Tests.BusinessTests
 {
     [TestFixture]
-    public class ReceiptPrintOutTests
+    public class BusinessLogicTest
     {
         private ReceiptsInputs _receiptsInputs;
-        private Rounding _rounding;
+        private readonly Rounding _rounding;
+        private BusinessLogic _businessLogic;
 
-        public ReceiptPrintOutTests()
+        public BusinessLogicTest()
         {
             _receiptsInputs = new ReceiptsInputs();
             _rounding = new Rounding();
+            _businessLogic = new BusinessLogic(_rounding);
         }
 
         [Test]
@@ -27,8 +29,8 @@ namespace SalesTaxes.Tests
             var receipt = new List<Receipt>();
 
             //Act
-            var businessLogic = new BusinessLogic(_rounding);
-            var result = businessLogic.Printout(receipt);
+            _businessLogic = new BusinessLogic(_rounding);
+            var result = _businessLogic.Printout(receipt);
 
             //Assert
             Assert.That(result, Is.Null);
@@ -45,11 +47,11 @@ namespace SalesTaxes.Tests
                 new Receipt {Quantity = 1 , SalesTaxes = false , ImportDuty = false , Price =  1 , ProductName = "Chocolate"}
 
             };
-            var businessLogic = new BusinessLogic(_rounding);
+            _businessLogic = new BusinessLogic(_rounding);
 
             //Act
-            businessLogic.Printout(receipt);
-            var totalReceiptTaxes = businessLogic._totalReceiptTaxesSummition;
+            _businessLogic.Printout(receipt);
+            var totalReceiptTaxes = _businessLogic.TotalReceiptTaxesSummation;
             //Assert
 
             Assert.That(totalReceiptTaxes, Is.EqualTo(0));
@@ -67,12 +69,12 @@ namespace SalesTaxes.Tests
                 new Receipt {Quantity = 1 , SalesTaxes = true , ImportDuty = false , Price =  1 , ProductName = "Chocolate"}
 
             };
-            var businessLogic = new BusinessLogic(_rounding);
+            _businessLogic = new BusinessLogic(_rounding);
 
             //Act
 
-            businessLogic.Printout(receipt);
-            var totalReceiptTaxes = businessLogic._totalReceiptTaxesSummition;
+            _businessLogic.Printout(receipt);
+            var totalReceiptTaxes = _businessLogic.TotalReceiptTaxesSummation;
 
 
             //Assert
@@ -88,12 +90,12 @@ namespace SalesTaxes.Tests
             {
                 new Receipt {Quantity = 1 , SalesTaxes = true , ImportDuty = false , Price =  10M , ProductName = "Perfume"}
             };
-            var businessLogic = new BusinessLogic(_rounding);
+            _businessLogic = new BusinessLogic(_rounding);
 
             //Act
-            businessLogic.Printout(receipt);
-            var totalReceiptTaxes = businessLogic._totalReceiptTaxesSummition;
-            var productPriceWithTax = businessLogic._productPriceWithTaxSummition;
+            _businessLogic.Printout(receipt);
+            var totalReceiptTaxes = _businessLogic.TotalReceiptTaxesSummation;
+            var productPriceWithTax = _businessLogic.ProductPriceWithTaxSummation;
 
             //Assert
             Assert.That(totalReceiptTaxes, Is.EqualTo(1M));
@@ -113,12 +115,12 @@ namespace SalesTaxes.Tests
             {
                 new Receipt {Quantity = 1 , SalesTaxes = false , ImportDuty = true , Price =  10M , ProductName = "HeadachePills"}
             };
-            var businessLogic = new BusinessLogic(_rounding);
+            _businessLogic = new BusinessLogic(_rounding);
 
             //Act
-            businessLogic.Printout(receipt);
-            var totalReceiptTaxes = businessLogic._totalReceiptTaxesSummition;
-            var productPriceWithTax = businessLogic._productPriceWithTaxSummition;
+            _businessLogic.Printout(receipt);
+            var totalReceiptTaxes = _businessLogic.TotalReceiptTaxesSummation;
+            var productPriceWithTax = _businessLogic.ProductPriceWithTaxSummation;
 
             //Assert
             Assert.That(totalReceiptTaxes, Is.EqualTo(.5M));
@@ -134,12 +136,12 @@ namespace SalesTaxes.Tests
             {
                 new Receipt {Quantity = 1 , SalesTaxes = true , ImportDuty = true , Price =  10M , ProductName = "Perfume"}
             };
-            var businessLogic = new BusinessLogic(_rounding);
+            _businessLogic = new BusinessLogic(_rounding);
 
             //Act
-            businessLogic.Printout(receipt);
-            var totalReceiptTaxes = businessLogic._totalReceiptTaxesSummition;
-            var productPriceWithTax = businessLogic._productPriceWithTaxSummition;
+            _businessLogic.Printout(receipt);
+            var totalReceiptTaxes = _businessLogic.TotalReceiptTaxesSummation;
+            var productPriceWithTax = _businessLogic.ProductPriceWithTaxSummation;
 
             //Assert
             Assert.That(totalReceiptTaxes, Is.EqualTo(1.5M));
@@ -150,12 +152,12 @@ namespace SalesTaxes.Tests
         public void Printout_IfTestCaseOneEntered_TestCaseOneShouldOutput()
         {
             //Arrange
-            var businessLogic = new BusinessLogic(_rounding);
+            _businessLogic = new BusinessLogic(_rounding);
 
             //Act
-            var receiptText = businessLogic.Printout(_receiptsInputs.FirstTextCase());
-            var totalReceiptTaxes = businessLogic._totalReceiptTaxesSummition;
-            var productPriceWithTax = businessLogic._productPriceWithTaxSummition;
+            var receiptText = _businessLogic.Printout(_receiptsInputs.FirstTextCase());
+            var totalReceiptTaxes = _businessLogic.TotalReceiptTaxesSummation;
+            var productPriceWithTax = _businessLogic.ProductPriceWithTaxSummation;
 
 
             //Assert
@@ -171,29 +173,19 @@ namespace SalesTaxes.Tests
 
         }
 
-
-
-
-
-
-
-
-
-
-
-
+        
 
 
         [Test]
         public void Printout_IfTestCaseTwoEntered_TestCaseTwoShouldOutput()
         {
             //Arrange
-            var businessLogic = new BusinessLogic(_rounding);
+            _businessLogic = new BusinessLogic(_rounding);
 
             //Act
-            var receiptText = businessLogic.Printout(_receiptsInputs.SecondTextCase());
-            var totalReceiptTaxes = businessLogic._totalReceiptTaxesSummition;
-            var productPriceWithTax = businessLogic._productPriceWithTaxSummition;
+            var receiptText = _businessLogic.Printout(_receiptsInputs.SecondTextCase());
+            var totalReceiptTaxes = _businessLogic.TotalReceiptTaxesSummation;
+            var productPriceWithTax = _businessLogic.ProductPriceWithTaxSummation;
 
 
             //Assert
@@ -213,12 +205,12 @@ namespace SalesTaxes.Tests
         public void Printout_IfTestCaseThreeEntered_TestCaseThreeShouldOutput()
         {
             //Arrange
-            var businessLogic = new BusinessLogic(_rounding);
+            _businessLogic = new BusinessLogic(_rounding);
 
             //Act
-            var receiptText = businessLogic.Printout(_receiptsInputs.ThirdTextCase());
-            var totalReceiptTaxes = businessLogic._totalReceiptTaxesSummition;
-            var productPriceWithTax = businessLogic._productPriceWithTaxSummition;
+            var receiptText = _businessLogic.Printout(_receiptsInputs.ThirdTextCase());
+            var totalReceiptTaxes = _businessLogic.TotalReceiptTaxesSummation;
+            var productPriceWithTax = _businessLogic.ProductPriceWithTaxSummation;
 
 
             //Assert

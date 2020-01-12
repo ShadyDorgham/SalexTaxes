@@ -1,17 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using SalesTaxes.Application.Helpers;
 using SalesTaxes.Application.Models;
+using SalesTaxes.Application.Utilities;
 
-namespace SalesTaxes.Application.DomainService
+namespace SalesTaxes.Application.Business
 {
     public class BusinessLogic : IBusinessLogic
     {
-        public decimal _totalReceiptTaxesSummition = 0;
-        public decimal _productPriceWithTaxSummition = 0;
+        public decimal TotalReceiptTaxesSummation;
+        public decimal ProductPriceWithTaxSummation;
 
-        private IRounding _rounding;
+        private readonly IRounding _rounding;
         public BusinessLogic(IRounding rounding )
         {
             _rounding = rounding;
@@ -29,12 +29,12 @@ namespace SalesTaxes.Application.DomainService
 
             foreach (var product in receipt)
             {
-                var productTax = _rounding.RoundUp(product.ProductPrice() * product.TaxRate());
+                var productTax = _rounding.RoundUp(product.TaxAmount());
                 var productPriceWithTax = product.ProductPrice() + productTax;
 
 
-                _totalReceiptTaxesSummition += productTax;
-                _productPriceWithTaxSummition += productPriceWithTax;
+                TotalReceiptTaxesSummation += productTax;
+                ProductPriceWithTaxSummation += productPriceWithTax;
 
 
                 receiptText.Append(product.Quantity + " ");
@@ -43,17 +43,17 @@ namespace SalesTaxes.Application.DomainService
                     receiptText.Append("imported ");
 
                 receiptText.Append(product.ProductName + " : ");
-                receiptText.Append((string) productPriceWithTax.ToString("N2"));
+                receiptText.Append(productPriceWithTax.ToString("N2"));
                 receiptText.AppendLine();
             }
 
             receiptText.Append("SalesTaxes" + ": ");
-            receiptText.Append(_totalReceiptTaxesSummition.ToString("N2"));
+            receiptText.Append(TotalReceiptTaxesSummation.ToString("N2"));
 
             receiptText.AppendLine();
 
             receiptText.Append("Total" + ": ");
-            receiptText.Append(_productPriceWithTaxSummition.ToString("N2"));
+            receiptText.Append(ProductPriceWithTaxSummation.ToString("N2"));
 
             return receiptText;
         }

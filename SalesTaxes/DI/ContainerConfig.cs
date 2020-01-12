@@ -1,6 +1,6 @@
 ﻿using Autofac;
-using SalesTaxes.Application.DomainService;
-using SalesTaxes.Application.Helpers;
+using SalesTaxes.Application.Business;
+using SalesTaxes.Application.Utilities;
 
 namespace SalesTaxes.DI
 {

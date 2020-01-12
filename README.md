@@ -6,7 +6,7 @@
 
 SalesTaxes program is a very simple c# console applicatione mainly focuses on calcaulating sales taxes and print  the invoice out.
 
-Here I enlist some approches , that I keep in my mind to be very close from them:
+Here I enlist some approches , that I kept in my mind while coding:
 •	Clean coding standards.
 •	Reach model.
 •	Domain driven design in isolation the bounded context however it is only one and it is the core.

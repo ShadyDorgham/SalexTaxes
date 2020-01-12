@@ -1,6 +1,6 @@
 ﻿
 using NUnit.Framework;
-using SalesTaxes.Helpers;
+using SalesTaxes.Application.Helpers;
 
 
 namespace SalesTaxes.Tests
@@ -8,6 +8,14 @@ namespace SalesTaxes.Tests
     [TestFixture]
     public class HelperTests
     {
+        private Rounding _rounding;
+        public HelperTests()
+        {
+            _rounding = new Rounding();
+        }
+
+
+
         [Test]
         [TestCase(1.499, 1.5)]
         [TestCase(7.125, 7.15)]
@@ -19,7 +27,7 @@ namespace SalesTaxes.Tests
         {
             //Arrange
             //Act
-            var result = input.RoundUp();
+            var result = _rounding.RoundUp(input);
             //Assert
             Assert.That(result, Is.EqualTo(expected));
         }
@@ -38,7 +46,7 @@ namespace SalesTaxes.Tests
         {
             //Arrange
             //Act
-            var result = input.TruncateDecimal();
+            var result = _rounding.TruncateDecimal(input);
             //Assert
             Assert.That(result, Is.EqualTo(expected));
         }

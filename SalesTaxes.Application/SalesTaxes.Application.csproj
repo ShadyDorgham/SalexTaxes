@@ -4,16 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5C43C8E5-0BCE-415F-8966-221C5A5CAF80}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>SalesTaxes</RootNamespace>
-    <AssemblyName>SalesTaxes</AssemblyName>
+    <ProjectGuid>{1F4CB19B-1A97-479D-9FDE-06A98B5FD807}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SalesTaxes.Application</RootNamespace>
+    <AssemblyName>SalesTaxes.Application</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -32,9 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autofac, Version=4.2.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\packages\Autofac.4.2.0\lib\net45\Autofac.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,22 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationRunner.cs" />
-    <Compile Include="DI\ContainerConfig.cs" />
-    <Compile Include="IApplicationRunner.cs" />
-    <Compile Include="Inputs\ReceiptsInputs.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="DomainService\IBusinessLogic.cs" />
+    <Compile Include="DomainService\BusinessLogic.cs" />
+    <Compile Include="Helpers\IRounding.cs" />
+    <Compile Include="Helpers\Rounding.cs" />
+    <Compile Include="Models\Receipt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SalesTaxes.Application\SalesTaxes.Application.csproj">
-      <Project>{1f4cb19b-1a97-479d-9fde-06a98b5fd807}</Project>
-      <Name>SalesTaxes.Application</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

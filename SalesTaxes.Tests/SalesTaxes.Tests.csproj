@@ -60,6 +60,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SalesTaxes.Application\SalesTaxes.Application.csproj">
+      <Project>{1F4CB19B-1A97-479D-9FDE-06A98B5FD807}</Project>
+      <Name>SalesTaxes.Application</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SalesTaxes\SalesTaxes.csproj">
       <Project>{5c43c8e5-0bce-415f-8966-221c5a5caf80}</Project>
       <Name>SalesTaxes</Name>

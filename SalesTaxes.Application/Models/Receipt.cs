@@ -1,4 +1,4 @@
-﻿namespace SalesTaxes.Models
+﻿namespace SalesTaxes.Application.Models
 {
     public class Receipt
     {
@@ -25,7 +25,7 @@
             if (ImportDuty)
                 taxRate += 0.05M;
 
-            return taxRate;
+            return taxRate ;
 
         }
 

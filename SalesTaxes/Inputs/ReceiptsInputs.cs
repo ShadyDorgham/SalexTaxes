@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using SalesTaxes.Models;
+using SalesTaxes.Application.Models;
 
 namespace SalesTaxes.Inputs
 {

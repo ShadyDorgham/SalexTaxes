@@ -1,12 +1,12 @@
 ﻿using System;
 
-namespace SalesTaxes.Helpers
+namespace SalesTaxes.Application.Helpers
 {
-    public static  class Rounding
+    public class Rounding : IRounding
     {
-        public static decimal RoundUp(this decimal amount)
+        public decimal RoundUp(decimal amount)
         {
-            var unRoundedAmount = amount.TruncateDecimal();
+            var unRoundedAmount = TruncateDecimal(amount);
 
            var fractionToBeRounded = amount - unRoundedAmount;
 
@@ -24,7 +24,7 @@ namespace SalesTaxes.Helpers
 
 
 
-        public static decimal TruncateDecimal(this decimal value)
+        public decimal TruncateDecimal(decimal value)
         {
             var integralValue = Math.Truncate(value);
 

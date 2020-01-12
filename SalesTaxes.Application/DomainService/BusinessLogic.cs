@@ -1,15 +1,23 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using SalesTaxes.Helpers;
-using SalesTaxes.Models;
+using SalesTaxes.Application.Helpers;
+using SalesTaxes.Application.Models;
 
-namespace SalesTaxes.DomainService
+namespace SalesTaxes.Application.DomainService
 {
-    public class ReceiptPrintout
+    public class BusinessLogic : IBusinessLogic
     {
         public decimal _totalReceiptTaxesSummition = 0;
         public decimal _productPriceWithTaxSummition = 0;
+
+        private IRounding _rounding;
+        public BusinessLogic(IRounding rounding )
+        {
+            _rounding = rounding;
+        }
+
+
 
         public StringBuilder Printout(List<Receipt> receipt)
         {
@@ -21,7 +29,7 @@ namespace SalesTaxes.DomainService
 
             foreach (var product in receipt)
             {
-                var productTax = (product.ProductPrice() * product.TaxRate()).RoundUp();
+                var productTax = _rounding.RoundUp(product.ProductPrice() * product.TaxRate());
                 var productPriceWithTax = product.ProductPrice() + productTax;
 
 
@@ -35,7 +43,7 @@ namespace SalesTaxes.DomainService
                     receiptText.Append("imported ");
 
                 receiptText.Append(product.ProductName + " : ");
-                receiptText.Append(productPriceWithTax.ToString("N2"));
+                receiptText.Append((string) productPriceWithTax.ToString("N2"));
                 receiptText.AppendLine();
             }
 

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesTaxes", "SalesTaxes\Sa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesTaxes.Tests", "SalesTaxes.Tests\SalesTaxes.Tests.csproj", "{5517723B-43F1-42D3-ABDC-ED399C841F15}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalesTaxes.Application", "SalesTaxes.Application\SalesTaxes.Application.csproj", "{1F4CB19B-1A97-479D-9FDE-06A98B5FD807}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{5517723B-43F1-42D3-ABDC-ED399C841F15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5517723B-43F1-42D3-ABDC-ED399C841F15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5517723B-43F1-42D3-ABDC-ED399C841F15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F4CB19B-1A97-479D-9FDE-06A98B5FD807}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F4CB19B-1A97-479D-9FDE-06A98B5FD807}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F4CB19B-1A97-479D-9FDE-06A98B5FD807}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F4CB19B-1A97-479D-9FDE-06A98B5FD807}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

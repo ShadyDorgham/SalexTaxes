@@ -52,8 +52,9 @@ namespace SalesTaxes.Tests.BusinessTests
             //Act
             _businessLogic.Printout(receipt);
             var totalReceiptTaxes = _businessLogic.TotalReceiptTaxesSummation;
-            //Assert
 
+
+            //Assert
             Assert.That(totalReceiptTaxes, Is.EqualTo(0));
         }
 
@@ -75,7 +76,6 @@ namespace SalesTaxes.Tests.BusinessTests
 
             _businessLogic.Printout(receipt);
             var totalReceiptTaxes = _businessLogic.TotalReceiptTaxesSummation;
-
 
             //Assert
             Assert.That(totalReceiptTaxes, Is.GreaterThan(0));

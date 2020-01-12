@@ -11,7 +11,7 @@
 
         public decimal ProductPrice()
         {
-            return Price * Quantity + 1;
+            return Price * Quantity;
         }
 
 

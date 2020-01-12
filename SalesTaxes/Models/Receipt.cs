@@ -23,7 +23,7 @@
                 taxRate += 0.10M;
 
             if (ImportDuty)
-                taxRate += 0.05M + 1;
+                taxRate += 0.05M;
 
             return taxRate;
 
